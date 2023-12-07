@@ -1,10 +1,43 @@
 let img = document.querySelector("#photo");
 let imgmain = document.querySelector(".main-img .box #photo");
+let mainimg = document.querySelector(".main-img");
 let box = document.querySelector(".box");
 let teks = document.querySelectorAll("#slogan");
+let teksElem = document.querySelectorAll(".teks");
 let teksValue = document.querySelector("#teks");
 let loading = document.querySelector(".loading");
 let count = document.querySelector(".counting");
+let fotoContest = document.querySelector(".twibon-foto-contest");
+let individu = document.querySelector(".twibon-individu");
+let frame = document.querySelector(".design-frame img");
+
+fotoContest.addEventListener("click", ()=>{
+    frame.src = fotoContest.querySelector("img").src;
+    teksElem[0].style = "bottom: 220px; left: 27px; box-shadow: none; border-radius: 15px;";
+    teksElem[1].style.display = "none";
+    mainimg.style = "align-items: start;";
+    box.style = "height: 485.8px; width: 864px; margin-top: 122px; margin-left: 28px;";
+    teks[0].textContent = "(sangga) (klik untuk mengganti)";
+    teks[1].textContent = "(sangga) (klik untuk mengganti)";
+    teks[0].style = "font-weight: 500;"
+    teksValue.value = "";
+    teksValue.placeholder = "Ketik nama sangga";
+    imgmain.src = "";
+    document.querySelector(".twibon").classList.add("contest");
+});
+
+individu.addEventListener("click", () => {
+    frame.src = individu.querySelector("img").src;
+    teksElem[0].style = "";
+    teksElem[1].style.display = "";
+    mainimg.style = "";
+    box.style = "";
+    teks[0].textContent = "(nama) (klik untuk mengganti)";
+    teks[1].textContent = "(sangga) (klik untuk mengganti)";
+    teksValue.value = "";
+    imgmain.src = "";
+    document.querySelector(".twibon").classList.remove("contest");
+});
 
 var load = function (event) {
     img.src = URL.createObjectURL(event.target.files[0])
@@ -55,44 +88,61 @@ var ok = function () {
     }
 
     const hasKurung = detectText(teks[0].textContent, teks[1].textContent)
+    const hasKurung1 = detectText(teks[0].textContent, null)
     const hasSrc = imgmain.getAttribute("src")
 
-    if (hasKurung) {
-        alert("format penulisan tidak sesuai")
-    } else if (teks[0].textContent == "" || teks[1].textContent == "") {
-        alert("nama atau sangga tidak boleh kosong")
-    } else if (hasSrc == "") {
-        alert("foto tidak boleh kosong")
-    } else if (!hasKurung && teks[0].textContent != "" && teks[1].textContent != "" && hasSrc) {
-        loading.style.display = "flex";
-
-        var cl = setInterval(counting, 10);
-
-        function counting() {
-            count.innerHTML = a + "%";
-            a++;
-
-            if (a > 100) {
-                count.innerHTML = "100%";
-                loading.style.display = "none";
-                a = 0;
-                clearInterval(cl)
-            }
+    if (document.querySelector(".twibon").classList.contains("contest")) {
+        if (hasKurung1) {
+            alert("format penulisan tidak sesuai")
+        } else if (teks[0].textContent == "" || teks[1].textContent == "") {
+            alert("nama atau sangga tidak boleh kosong")
+        } else if (hasSrc == "") {
+            alert("foto tidak boleh kosong")
+        } else if (!hasKurung1 && teks[0].textContent != "" && hasSrc) {
+            downloadTwibon();
         }
-
-        document.querySelector(".frame").style = "scale: 1;";
-
-        setTimeout(() => {
-            var node = document.getElementById('twibon');
-
-            html2canvas(node).then(function (canvas) {
-                downloadCanvasAsImage(canvas, "test.jpg");
-                setTimeout(() => {
-                    document.querySelector(".frame").style = "scale: 0.36;";
-                }, 600)
-            });
-        }, 500)
+    } else if (!document.querySelector(".twibon").classList.contains("contest")) {
+        if (hasKurung) {
+            alert("format penulisan tidak sesuai")
+        } else if (teks[0].textContent == "" || teks[1].textContent == "") {
+            alert("nama atau sangga tidak boleh kosong")
+        } else if (hasSrc == "") {
+            alert("foto tidak boleh kosong")
+        } else if (!hasKurung && teks[0].textContent != "" && teks[1].textContent != "" && hasSrc) {
+            downloadTwibon();
+        }
     }
+}
+
+function downloadTwibon() {
+    loading.style.display = "flex";
+
+    var cl = setInterval(counting, 10);
+
+    function counting() {
+        count.innerHTML = a + "%";
+        a++;
+
+        if (a > 100) {
+            count.innerHTML = "100%";
+            loading.style.display = "none";
+            a = 0;
+            clearInterval(cl)
+        }
+    }
+
+    document.querySelector(".frame").style = "scale: 1;";
+
+    setTimeout(() => {
+        var node = document.getElementById('twibon');
+
+        html2canvas(node).then(function (canvas) {
+            downloadCanvasAsImage(canvas, "test.jpg");
+            setTimeout(() => {
+                document.querySelector(".frame").style = "scale: 0.36;";
+            }, 600)
+        });
+    }, 500)
 }
 
 let dframe = document.querySelector(".design-frame")
