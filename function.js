@@ -191,6 +191,7 @@ function imageEvent(elem, set) {
     }
 
     function univMove(event) {
+        event.preventDefault();
         if (touches > 1 && touches < 3) {
 
             var newDistance = Math.hypot(
