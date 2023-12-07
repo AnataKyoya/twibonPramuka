@@ -35,6 +35,7 @@ individu.addEventListener("click", () => {
     teks[0].textContent = "(nama) (klik untuk mengganti)";
     teks[1].textContent = "(sangga) (klik untuk mengganti)";
     teksValue.value = "";
+    teksValue.placeholder = "Ketik Nama dan Sangga";
     imgmain.src = "";
     document.querySelector(".twibon").classList.remove("contest");
 });
