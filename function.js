@@ -138,7 +138,12 @@ function downloadTwibon() {
         var node = document.getElementById('twibon');
 
         html2canvas(node).then(function (canvas) {
-            downloadCanvasAsImage(canvas, "test.jpg");
+            if (document.querySelector(".twibon").classList.contains("contest")) {
+                downloadCanvasAsImage(canvas, "twibon-foto-contest.png");
+            } else if (!document.querySelector(".twibon").classList.contains("contest")) {
+                downloadCanvasAsImage(canvas, "twibon.png");
+            }
+            
             setTimeout(() => {
                 document.querySelector(".frame").style = "scale: 0.36;";
             }, 600)
