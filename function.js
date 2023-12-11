@@ -73,8 +73,8 @@ for (let i = 0; i < teks.length; i++) {
 }
 
 let a = 0;
-let c = ["(nama)", "(sangga)", ":", "(klik untuk mengganti)", "sangga", "nama"]
-let d = ["(", ")"]
+let c = ["(nama)", "(sangga)", ":", "(klik untuk mengganti)", "sangga", "nama", "nama:", "sangga:", "kelas:", "kelas"]
+let d = ["(", ")", ":"]
 
 var ok = function () {
     function detectText(text, text2) {
