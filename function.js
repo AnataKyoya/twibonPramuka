@@ -146,7 +146,7 @@ function downloadTwibon() {
 
         html2canvas(node).then(function (canvas) {
             if (document.querySelector(".twibon").classList.contains("contest")) {
-                downloadCanvasAsImage(canvas, "twibon-foto-contest.png");
+                downloadCanvasAsImage(canvas, teks[0].textContent+".png");
             } else if (!document.querySelector(".twibon").classList.contains("contest")) {
                 downloadCanvasAsImage(canvas, "twibon.png");
             }
