@@ -41,10 +41,17 @@ individu.addEventListener("click", () => {
 });
 
 var load = function (event) {
-    img.src = URL.createObjectURL(event.target.files[0])
-    imgmain.style.scale = "1";
-    imgmain.style.top = "0";
-    imgmain.style.left = "0";
+    const fileName = event.target.files[0].name;
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+
+    if (fileExtension === 'png' || fileExtension === 'jpeg' || fileExtension === 'jpg') {
+        img.src = URL.createObjectURL(event.target.files[0])
+        imgmain.style.scale = "1";
+        imgmain.style.top = "0";
+        imgmain.style.left = "0";
+    } else {
+        alert("format tidak sesuai. Format foto yang diterima hanya jpg, jpeg, png")
+    }
 }
 
 let list = []
