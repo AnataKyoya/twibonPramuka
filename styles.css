@@ -39,7 +39,7 @@ body {
 }
 
 .box {
-    width: 460px;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     display: flex;
@@ -89,6 +89,7 @@ body {
     box-shadow: 5px 5px 10px #00000042;
     background-color: #ffffff;
     z-index: 9999;
+    display: none;
 }
 
 #slogan {
@@ -218,4 +219,5 @@ body {
 
 .twibon-opsi img {
     width: 100px;
+
 }
