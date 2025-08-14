@@ -205,7 +205,7 @@ body {
 
 .twibon-opsi div {
     margin: 10px;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -220,5 +220,6 @@ body {
     width: 100px;
 
 }
+
 
 
