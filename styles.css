@@ -197,7 +197,7 @@ body {
 }
 
 .twibon-opsi {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -220,4 +220,5 @@ body {
     width: 100px;
 
 }
+
 
