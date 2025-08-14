@@ -77,49 +77,7 @@ let c = ["(nama)", "(sangga)", ":", "(klik untuk mengganti)", "sangga", "nama", 
 let d = ["(", ")", ":", ","]
 
 var ok = function () {
-    function detectText(text, text2) {
-        let input = text + " " + text2;
-        const lowercasedInput = input.toLowerCase();
-        const words = lowercasedInput.split("");
-        const words1 = lowercasedInput.split(/\s+/);
-        const word1 = words.some(word => d.includes(word));
-        const word2 = words1.some(word => c.includes(word));
-        
-        if(word1){
-            return word1;
-        } 
-        
-        if (word2){
-            return word2;
-        }
-
-    }
-
-    const hasKurung = detectText(teks[0].textContent, teks[1].textContent)
-    const hasKurung1 = detectText(teks[0].textContent, null)
-    const hasSrc = imgmain.getAttribute("src")
-
-    if (document.querySelector(".twibon").classList.contains("contest")) {
-        if (hasKurung1) {
-            alert("format penulisan tidak sesuai")
-        } else if (teks[0].textContent == "" || teks[1].textContent == "") {
-            alert("nama atau sangga tidak boleh kosong")
-        } else if (hasSrc == "") {
-            alert("foto tidak boleh kosong")
-        } else if (!hasKurung1 && teks[0].textContent != "" && hasSrc) {
-            downloadTwibon();
-        }
-    } else if (!document.querySelector(".twibon").classList.contains("contest")) {
-        if (hasKurung) {
-            alert("format penulisan tidak sesuai")
-        } else if (teks[0].textContent == "" || teks[1].textContent == "") {
-            alert("nama atau sangga tidak boleh kosong")
-        } else if (hasSrc == "") {
-            alert("foto tidak boleh kosong")
-        } else if (!hasKurung && teks[0].textContent != "" && teks[1].textContent != "" && hasSrc) {
-            downloadTwibon();
-        }
-    }
+    downloadTwibon();
 }
 
 function downloadTwibon() {
@@ -236,3 +194,4 @@ function downloadCanvasAsImage(v, filename) {
     a.download = filename
     a.dispatchEvent(new MouseEvent("click"))
 }
+
