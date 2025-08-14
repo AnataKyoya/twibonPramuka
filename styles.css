@@ -59,7 +59,6 @@ body {
     z-index: 99;
     display: flex;
     align-items: center;
-    overflow: hidden;
 }
 
 .design-frame {
@@ -221,3 +220,4 @@ body {
     width: 100px;
 
 }
+
